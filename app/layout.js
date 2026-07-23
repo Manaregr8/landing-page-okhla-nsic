@@ -1,4 +1,4 @@
-import { Cormorant_Garamond, Inter } from 'next/font/google';
+import { Cormorant_Garamond, Inter, Manrope } from 'next/font/google';
 import './globals.css';
 
 const cormorant = Cormorant_Garamond({
@@ -14,6 +14,12 @@ const inter = Inter({
   weight: ['300', '400', '500', '600', '700'],
 });
 
+const manrope = Manrope({
+  subsets: ['latin'],
+  variable: '--font-manrope',
+  weight: ['300', '400', '500', '600', '700', '800'],
+});
+
 export const metadata = {
   title: 'spacetime - The House & Its Neighbours',
   description: 'Sixteen houses of good taste, in one quiet room.',
@@ -21,7 +27,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${cormorant.variable} ${inter.variable}`}>
+    <html lang="en" className={`${cormorant.variable} ${inter.variable} ${manrope.variable}`}>
       <body>{children}</body>
     </html>
   );

@@ -3,17 +3,55 @@ import styles from './page.module.css';
 import logo from '../assets/logo.png';
 import bg from '../assets/without_line_background.jpeg';
 
+// Import banner logos
+import artLogo from '../assets/bannerLogo/art.png';
+import betterCollectiveLogo from '../assets/bannerLogo/bettercollective.svg';
+import boltLogo from '../assets/bannerLogo/bolt.png';
+import energiaLogo from '../assets/bannerLogo/energia.png';
+import hoccoLogo from '../assets/bannerLogo/hocco.svg';
+import kraftshalaLogo from '../assets/bannerLogo/kraftshala.svg';
+import kudratLogo from '../assets/bannerLogo/kudrat.svg';
+import lenskartLogo from '../assets/bannerLogo/lenskartlogo.svg';
+import norvicLogo from '../assets/bannerLogo/norvic.svg';
+
+import onPurposeLogo from '../assets/bannerLogo/on purpose.png';
+import redbusLogo from '../assets/bannerLogo/redbus.png';
+import renewablesLogo from '../assets/bannerLogo/renewables.png';
+import smWebpLogo from '../assets/bannerLogo/sm.webp';
+import ukindiaLogo from '../assets/bannerLogo/ukindia.svg';
+import vitrayaLogo from '../assets/bannerLogo/vitraya.svg';
+import waareeLogo from '../assets/bannerLogo/waaree.png';
+import wisemonkLogo from '../assets/bannerLogo/wisemonk.svg';
+import wndlaLogo from '../assets/bannerLogo/wndla.png';
+
 export default function Home() {
-  const cards = [
-    { id: 1, title: 'Maison Verre', subtitle: 'INTERIORS' },
-    { id: 2, title: 'Aureum & Co.', subtitle: 'PRIVATE WEALTH' },
-    { id: 3, title: 'Penteli Estates', subtitle: 'REAL ESTATE' },
-    { id: 4, title: 'Kalio Cellars', subtitle: 'VINTNERS' },
-    { id: 5, title: 'Cassiel Beau', subtitle: 'JEWELLERS' },
-    { id: 6, title: 'Halcyon Motors', subtitle: 'AUTOMOBILES' },
-    { id: 7, title: 'Beau Rêve', subtitle: 'CHAMPAGNE' },
-    { id: 8, title: 'Meridian Watch', subtitle: 'HOROLOGY' },
+  const logosRow1 = [
+    { id: 'art', src: artLogo, alt: 'Art Logo' },
+    { id: 'bettercollective', src: betterCollectiveLogo, alt: 'Better Collective Logo' },
+    { id: 'bolt', src: boltLogo, alt: 'Bolt Logo' },
+    { id: 'energia', src: energiaLogo, alt: 'Energia Logo' },
+    { id: 'hocco', src: hoccoLogo, alt: 'Hocco Logo' },
+    { id: 'kraftshala', src: kraftshalaLogo, alt: 'Kraftshala Logo' },
+    { id: 'kudrat', src: kudratLogo, alt: 'Kudrat Logo' },
+    { id: 'lenskart', src: lenskartLogo, alt: 'Lenskart Logo' },
+    { id: 'norvic', src: norvicLogo, alt: 'Norvic Logo' },
   ];
+
+  const logosRow2 = [
+    { id: 'onpurpose', src: onPurposeLogo, alt: 'On Purpose Logo' },
+    { id: 'redbus', src: redbusLogo, alt: 'Redbus Logo' },
+    { id: 'renewables', src: renewablesLogo, alt: 'Renewables Logo' },
+    { id: 'smwebp', src: smWebpLogo, alt: 'SM Logo Webp' },
+    { id: 'ukindia', src: ukindiaLogo, alt: 'UK India Logo' },
+    { id: 'vitraya', src: vitrayaLogo, alt: 'Vitraya Logo' },
+    { id: 'waaree', src: waareeLogo, alt: 'Waaree Logo' },
+    { id: 'wisemonk', src: wisemonkLogo, alt: 'Wisemonk Logo' },
+    { id: 'wndla', src: wndlaLogo, alt: 'Wndla Logo' },
+  ];
+
+  // Repeat logos to ensure a seamless infinite marquee effect
+  const marqueeRow1 = [...logosRow1, ...logosRow1, ...logosRow1];
+  const marqueeRow2 = [...logosRow2, ...logosRow2, ...logosRow2];
 
   return (
     <main className={styles.main}>
@@ -38,7 +76,7 @@ export default function Home() {
             <Image
               src={logo}
               alt="spacetime logo"
-              height={30}
+              height={40}
               className={styles.logoImage}
               priority
             />
@@ -68,25 +106,19 @@ export default function Home() {
             {/* First Row: Right to Left */}
             <div className={styles.marqueeContainer}>
               <div className={`${styles.marqueeTrack} ${styles.marqueeLeft}`}>
-                {cards.slice(0, 4).concat(cards.slice(0, 4)).map((card, idx) => (
+                {marqueeRow1.map((logo, idx) => (
                   <div
-                    key={`r1-${card.id}-${idx}`}
-                    className={styles.card}
+                    key={`r1-${logo.id}-${idx}`}
+                    className={styles.logoCard}
                   >
-                    <div className={styles.cardLeft}>
-                      <svg viewBox="0 0 24 24" className={styles.cardStar} fill="currentColor">
-                        <path d="M12 4Q12 12 20 12Q12 12 12 20Q12 12 4 12Q12 12 12 4Z" />
-                      </svg>
-                      <div className={styles.cardInfo}>
-                        <h3 className={styles.cardTitle}>{card.title}</h3>
-                        <p className={styles.cardSubtitle}>{card.subtitle}</p>
-                      </div>
-                    </div>
-                    <div className={styles.cardRight}>
-                      <svg viewBox="0 0 24 24" className={styles.cardArrow} fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                        <polyline points="12 5 19 12 12 19"></polyline>
-                      </svg>
+                    <div className={styles.logoImageWrapper}>
+                      <Image
+                        src={logo.src}
+                        alt={logo.alt}
+                        fill
+                        sizes="(max-width: 768px) 180px, 220px"
+                        className={styles.logoImageInside}
+                      />
                     </div>
                   </div>
                 ))}
@@ -96,25 +128,19 @@ export default function Home() {
             {/* Second Row: Left to Right */}
             <div className={styles.marqueeContainer}>
               <div className={`${styles.marqueeTrack} ${styles.marqueeRight}`}>
-                {cards.slice(4, 8).concat(cards.slice(4, 8)).map((card, idx) => (
+                {marqueeRow2.map((logo, idx) => (
                   <div
-                    key={`r2-${card.id}-${idx}`}
-                    className={styles.card}
+                    key={`r2-${logo.id}-${idx}`}
+                    className={styles.logoCard}
                   >
-                    <div className={styles.cardLeft}>
-                      <svg viewBox="0 0 24 24" className={styles.cardStar} fill="currentColor">
-                        <path d="M12 4Q12 12 20 12Q12 12 12 20Q12 12 4 12Q12 12 12 4Z" />
-                      </svg>
-                      <div className={styles.cardInfo}>
-                        <h3 className={styles.cardTitle}>{card.title}</h3>
-                        <p className={styles.cardSubtitle}>{card.subtitle}</p>
-                      </div>
-                    </div>
-                    <div className={styles.cardRight}>
-                      <svg viewBox="0 0 24 24" className={styles.cardArrow} fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                        <polyline points="12 5 19 12 12 19"></polyline>
-                      </svg>
+                    <div className={styles.logoImageWrapper}>
+                      <Image
+                        src={logo.src}
+                        alt={logo.alt}
+                        fill
+                        sizes="(max-width: 768px) 180px, 220px"
+                        className={styles.logoImageInside}
+                      />
                     </div>
                   </div>
                 ))}
