@@ -34,10 +34,6 @@ export default function Home() {
       <div className={styles.contentContainer}>
         {/* Top Header */}
         <header className={styles.header}>
-          <div className={styles.tagline}>
-            <span className={styles.taglineLine}></span>
-            <span className={styles.taglineText}>THE HOUSE & ITS NEIGHBOURS</span>
-          </div>
           <div className={styles.logoContainer}>
             <Image
               src={logo}
@@ -52,9 +48,8 @@ export default function Home() {
         {/* Hero Section */}
         <section className={styles.heroSection}>
           <h1 className={styles.heading}>
-            Sixteen houses of<br />
-            <span className={styles.goldItalic}>good taste,</span><br />
-            in one quiet room.
+            An address for those who’ve<br />
+            <span className={styles.goldItalic}> outgrown the ordinary.</span><br />
           </h1>
 
           {/* Decorative Divider */}
