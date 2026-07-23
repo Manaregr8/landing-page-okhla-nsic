@@ -1,0 +1,349 @@
+.main {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.bgContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.bgImage {
+  object-fit: cover;
+  object-position: top;
+
+}
+
+.bgOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(225deg,
+      rgba(10, 9, 8, 0.95) 0%,
+      rgba(10, 9, 8, 0.85) 15%,
+      rgba(10, 9, 8, 0.15) 35%,
+      rgba(10, 9, 8, 0) 40%,
+      rgba(10, 9, 8, 0.6) 60%,
+      rgba(10, 9, 8, 0.95) 85%,
+      rgba(10, 9, 8, 1) 100%);
+  z-index: 1;
+}
+
+.contentContainer {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 48px 80px;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.tagline {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.taglineLine {
+  width: 24px;
+  height: 1px;
+  background-color: var(--color-gold);
+  opacity: 0.8;
+}
+
+.taglineText {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  color: var(--color-gold);
+  opacity: 0.85;
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+}
+
+.logoImage {
+  object-fit: contain;
+  width: auto;
+}
+
+/* Hero Section */
+.heroSection {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: flex-end;
+  padding-bottom: 20px;
+}
+
+.heading {
+  font-family: var(--font-serif);
+  font-size: clamp(2.4rem, 4.8vw, 4.2rem);
+  font-weight: 300;
+  line-height: 1.15;
+  color: var(--color-text-light);
+  margin-bottom: 36px;
+  letter-spacing: -0.01em;
+}
+
+.goldItalic {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--color-gold);
+}
+
+/* Decorative Divider */
+.divider {
+  display: flex;
+  align-items: center;
+  width: 40%;
+  margin-bottom: 48px;
+}
+
+.dividerLine {
+  height: 1px;
+  flex-grow: 1;
+  background: linear-gradient(to right,
+      rgba(202, 164, 112, 0.4),
+      rgba(202, 164, 112, 0.05));
+}
+
+/* Make the left line fade from left to right towards the star */
+.divider .dividerLine:first-child {
+  background: linear-gradient(to right,
+      rgba(202, 164, 112, 0.05),
+      rgba(202, 164, 112, 0.4));
+}
+
+/* Make the right line fade from the star towards the right */
+.divider .dividerLine:last-child {
+  background: linear-gradient(to right,
+      rgba(202, 164, 112, 0.4),
+      rgba(202, 164, 112, 0.05));
+}
+
+.starWrapper {
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.starIcon {
+  width: 18px;
+  height: 18px;
+  color: var(--color-gold);
+  filter: drop-shadow(0 0 4px rgba(202, 164, 112, 0.4));
+}
+
+/* Infinite Marquee Section */
+.marqueeSection {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.marqueeContainer {
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  padding: 10px 0;
+  /* Prevents translateY clipping */
+}
+
+.marqueeTrack {
+  display: flex;
+  width: max-content;
+}
+
+.marqueeLeft {
+  animation: scrollLeft 32s linear infinite;
+}
+
+.marqueeRight {
+  animation: scrollRight 32s linear infinite;
+}
+
+@keyframes scrollLeft {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scrollRight {
+  0% {
+    transform: translateX(-50%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Card Styling with Premium Glassmorphism */
+.card {
+  background: var(--color-glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--color-glass-border);
+  border-radius: 6px;
+  padding: 22px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  position: relative;
+  overflow: hidden;
+  width: 290px;
+  margin-right: 20px;
+  flex-shrink: 0;
+}
+
+.card:hover {
+  border-color: var(--color-glass-border-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6),
+    0 0 15px rgba(202, 164, 112, 0.04);
+  background: rgba(18, 16, 14, 0.85);
+}
+
+.cardLeft {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.cardStar {
+  width: 12px;
+  height: 12px;
+  color: var(--color-gold);
+  margin-top: 6px;
+  flex-shrink: 0;
+  transition: var(--transition-smooth);
+}
+
+.card:hover .cardStar {
+  transform: rotate(90deg) scale(1.1);
+  color: var(--color-gold-hover);
+}
+
+.cardInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.cardTitle {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: var(--color-text-light);
+  line-height: 1.25;
+  transition: var(--transition-smooth);
+}
+
+.cardSubtitle {
+  font-family: var(--font-sans);
+  font-size: 0.625rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  color: var(--color-text-muted);
+  margin-top: 5px;
+  transition: var(--transition-smooth);
+}
+
+.card:hover .cardTitle {
+  color: #ffffff;
+}
+
+.card:hover .cardSubtitle {
+  color: var(--color-gold);
+}
+
+.cardRight {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cardArrow {
+  width: 16px;
+  height: 16px;
+  color: var(--color-gold);
+  opacity: 0.6;
+  transition: var(--transition-smooth);
+}
+
+.card:hover .cardArrow {
+  opacity: 1;
+  transform: translateX(4px);
+  color: var(--color-gold-hover);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .contentContainer {
+    padding: 48px 48px;
+  }
+}
+
+@media (max-width: 768px) {
+  .contentContainer {
+    padding: 32px 24px;
+    justify-content: flex-start;
+    gap: 48px;
+  }
+
+  .header {
+    margin-bottom: 0px;
+  }
+
+  .card {
+    width: 250px;
+    margin-right: 16px;
+    padding: 18px 20px;
+  }
+
+  .heading {
+    margin-bottom: 24px;
+  }
+
+  .divider {
+    margin-bottom: 32px;
+  }
+}
